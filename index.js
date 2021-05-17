@@ -4,14 +4,12 @@ const secureJSON_ = require("secure-json");
 let secureJSON;
 const { env_vars,addEnvVar } = require("glitch-env");
 const pk_str = env_vars.JSON_PRIV_KEY;
-const { execSync } = require('child_process');
+
 
 const saveKeysAndRefresh = function(msg) {
   console.log(msg);
   addEnvVar("JSON_PRIV_KEY",secureJSON.exportedKeys.keys);
-  const data = execSync( 'refresh', { encoding: 'utf8' }).toString();
-  console.log(data);
-  process.exit();
+  refresh () ;
 }
 
 
@@ -46,9 +44,21 @@ if (pk_str === 'reset') {
   }
 }
 
+function refresh () {
+  
+  const findURL = /((\w+:\/\/)[-a-zA-Z0-9:@;?&=\/%\+\.\*!'\(\),\$_\{\}\^~\[\]`#|]+)/;
+  const refreshCMD = require('fs').readFileSync('/usr/bin/refresh','utf8');
+  const refreshURL = findURL.exec(refreshCMD)[1];
+  const fetch = require('node-fetch');
+  
+  fetch (refreshURL, { method: 'POST', body: 'a=1' })
+    .then(res => process.exit()); // expecting a json response
+
+}
 
 lib.stringify=secureJSON.stringify;
 lib.parse=secureJSON.parse;
+lib.refresh = refresh;
 if (secureJSON && secureJSON.lockdown) 
    lib.secureJSON=secureJSON;
 
