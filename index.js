@@ -1,19 +1,17 @@
 const lib = (module.exports = {});
 
-const { env_vars,setEnvVar } = require("glitch-env");
 const secureJSON_ = require("secure-json");
 let secureJSON;
-
+const { env_vars,addEnvVar } = require("glitch-env");
 const pk_str = env_vars.JSON_PRIV_KEY;
-const { exec } = require('child_process');
+const { execSync } = require('child_process');
 
 const saveKeysAndRefresh = function(msg) {
-  setEnvVar("JSON_PRIV_KEY",secureJSON.exportedKeys.keys,function(){
-     console.log(msg); 
-     exec('refresh', (error, stdout, stderr) => {
-        setTimeout(process.exit,1000);
-     });
-  });
+  console.log(msg);
+  addEnvVar("JSON_PRIV_KEY",secureJSON.exportedKeys.keys);
+  const data = execSync( 'refresh', { encoding: 'utf8' }).toString();
+  console.log(data);
+  process.exit();
 }
 
 
@@ -43,7 +41,7 @@ if (pk_str === 'reset') {
        
         
      } else {
-       console.log ("not expecting JSON_PRIV_KEY to be",typeof pk_str);
+       saveKeysAndRefresh ("not expecting JSON_PRIV_KEY to be "+typeof pk_str+" - refreshing");
      }
   }
 }
