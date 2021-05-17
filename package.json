@@ -1,0 +1,27 @@
+{
+    "name": "glitch-secure-json",
+    "description": "encrypts json using public/private key encryption",
+    "version": "1.0.0",
+    "engines": {
+        "node": ">=6.9.5"
+    },
+    "repository": {
+      "url": "https://github.com/jonathan-annett/glitch-secure-json",
+      "type": "git"
+    },
+    "keywords": [
+        "glitch",
+        "env",
+        "update"
+     ],
+    "author": "Jonathan Annett",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/jonathan-annett/glitch-secure-json/issues"
+    },
+    "homepage": "https://github.com/jonathan-annett/glitch-secure-json#readme",
+    "dependencies": {
+        "glitch-env": "github:jonathan-annett/glitch-env#59a2ceeda2cb993f50d7e53c174a503336a61100" ,
+        "secure-json": "github:jonathan-annett/secure-json#f3e121141cea16209709e4aa7fe7d7f86e396dbb"
+    }
+}
