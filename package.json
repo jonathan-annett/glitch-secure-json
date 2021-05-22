@@ -23,7 +23,7 @@
     "dependencies": {
         "node-fetch": "^2.6.1",
         "glitch-env":"github:jonathan-annett/glitch-env#6ba78b6f3e3e1ad2c687834a08d3f616cd3770aa",
-        "secure-json": "github:jonathan-annett/secure-json#cb67b666d448863ae7eefb5450358def38a7f8a1"
+        "secure-json": "github:jonathan-annett/secure-json#b5f4788b95ec4fcfde5b43d0f6b334963d63c496"
 
     }
 }
