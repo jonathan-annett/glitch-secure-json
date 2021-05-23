@@ -21,7 +21,7 @@ if (pk_str === 'reset') {
   if (typeof pk_str==='string' && pk_str.length>1024) {
       secureJSON = secureJSON_(pk_str);
       if (secureJSON) {
-         console.log('secureJSON is ready (loaded previous keys)');  
+         //console.log('secureJSON is ready (loaded previous keys)');  
       } else {
         secureJSON = secureJSON_();
         saveKeysAndRefresh('something went wrong (keys were corrupt?,created new keys - refreshing)');  
