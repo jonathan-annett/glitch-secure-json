@@ -4,7 +4,7 @@ const secureJSON_ = require("secure-json");
 let secureJSON;
 const { env_vars,addEnvVar } = require("glitch-env");
 const pk_str = env_vars.JSON_PRIV_KEY;
-
+const is_glitch = require("glitch-detect");
 const saveKeysAndRefresh = function(msg) {
   console.log(msg);
   addEnvVar("JSON_PRIV_KEY",secureJSON.exportedKeys.keys);
@@ -45,7 +45,9 @@ if (pk_str === 'reset') {
 
 function refresh () {
   
-  
+if (!is_glitch) {  
+   return; 
+}
 const { exec } = require('child_process');
   
   exec('refresh', (error, stdout, stderr) => {
