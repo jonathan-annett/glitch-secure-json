@@ -22,7 +22,7 @@
     "homepage": "https://github.com/jonathan-annett/glitch-secure-json#readme",
     "dependencies": {
         "node-fetch": "^2.6.1",
-        "glitch-env":"github:jonathan-annett/glitch-env#6ba78b6f3e3e1ad2c687834a08d3f616cd3770aa",
+        "glitch-env":"github:jonathan-annett/glitch-env#11711af9c77c56376ce5ef59fd2a19b6373c2d5b",
         "secure-json": "github:jonathan-annett/secure-json#9359f463257470e6aae8fe3428ad1677dff9841a"
 
     }
